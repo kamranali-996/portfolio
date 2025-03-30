@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital FABLAB - Courses</title>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0ea5e9;
+            --secondary-color: #6366f1;
+            --tertiary-color: #8b5cf6;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --bg-color: #f5f8fa;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --primary-gradient: linear-gradient(135deg, #6366f1, #3b82f6, #0ea5e9);
+            --secondary-gradient: linear-gradient(135deg, #8b5cf6, #6366f1, #3b82f6);
+            --text-gradient: linear-gradient(to right, #0ea5e9, #6366f1, #8b5cf6);
+        }
+        
+        /* Dark mode variables */
+        .dark-mode {
+            --dark-color: #f8fafc;
+            --light-color: #1e293b;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode .navbar {
+            background-color: rgba(30, 41, 59, 0.9);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background-image: var(--text-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode .nav-link {
+            color: var(--light-color);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-image: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode .dark-mode-toggle {
+            color: var(--light-color);
+        }
+        
+        .dark-mode-toggle:hover {
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        
+        /* Hero Section */
+        .courses-hero {
+            padding-top: 6rem;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background-image: var(--primary-gradient);
+            color: white;
+            text-align: center;
+        }
+        
+        .courses-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+        
+        .courses-hero-content {
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .courses-hero-heading {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .courses-hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Courses Section */
+        .courses-section {
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-image: var(--primary-gradient);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .dark-mode .section-subtitle {
+            color: var(--light-color);
+            opacity: 0.9;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .course-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .course-header {
+            padding: 2rem;
+            background-image: var(--primary-gradient);
+            color: var(--light-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+        }
+        
+        .course-header h3 {
+            position: relative;
+            z-index: 1;
+            font-size: 1.5rem;
+        }
+        
+        .coming-soon .course-header {
+            background-image: var(--secondary-gradient);
+        }
+        
+        .coming-soon::after {
+            content: "Coming Soon";
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: var(--shadow);
+        }
+        
+        .course-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .course-content {
+            padding: 2rem;
+        }
+        
+        .course-content p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            opacity: 0.8;
+        }
+        
+        .dark-mode .course-content p {
+            color: var(--light-color);
+        }
+        
+        .course-content h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .course-content ul {
+            list-style-type: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .course-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--dark-color);
+            opacity: 0.9;
+        }
+        
+        .dark-mode .course-content li {
+            color: var(--light-color);
+        }
+        
+        .course-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background-image: var(--primary-gradient);
+            color: var(--light-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 4rem 0 2rem;
+        }
+        
+        .dark-mode footer {
+            background-color: #0f172a;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-description {
+            max-width: 300px;
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-image: var(--primary-gradient);
+        }
+        
+        .footer-links {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-color);
+            opacity: 0.7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-color);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background-image: var(--primary-gradient);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .courses-hero-heading {
+                font-size: 2.5rem;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        /* Delay classes for staggered animations */
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">Digital FABLAB</a>
+            <div class="nav-menu">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#projects" class="nav-link">Projects</a>
+                <a href="courses.html" class="nav-link">Modules</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <button class="dark-mode-toggle" id="darkModeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="courses-hero">
+        <div class="container">
+            <div class="courses-hero-content fade-in">
+                <h1 class="courses-hero-heading">Digital FABLAB Modules</h1>
+                <p class="courses-hero-subtitle">Explore the various technologies and skills I'm developing through my coursework in the Digital Fabrication Laboratory program.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="courses-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">All Modules</h2>
+                <p class="section-subtitle">Detailed information about each module in the Digital FABLAB curriculum</p>
+            </div>
+            <div class="courses-grid">
+                <!-- Web Development -->
+                <div class="course-card fade-in">
+                    <div class="course-header">
+                        <i class="fas fa-code course-icon"></i>
+                        <h3>Web Development</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Currently learning the foundations of web development to create interactive and responsive websites.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>HTML - Structure and semantics</li>
+                            <li>CSS - Styling and layouts</li>
+                            <li>JavaScript - Interactivity</li>
+                        </ul>
+                        <h4>HTML (HyperText Markup Language)</h4>
+                        <p>HTML is the standard markup language for creating web pages. It defines the structure and content of web pages using various elements and tags.</p>
+                        <ul>
+                            <li>Semantic HTML elements</li>
+                            <li>Forms and input types</li>
+                            <li>Multimedia integration</li>
+                            <li>Document structure</li>
+                        </ul>
+                        
+                        <h4>CSS (Cascading Style Sheets)</h4>
+                        <p>CSS is a style sheet language used for describing the presentation of a document written in HTML. It controls the layout, colors, and visual appearance of web pages.</p>
+                        <ul>
+                            <li>Box model and layout</li>
+                            <li>Flexbox and Grid systems</li>
+                            <li>Responsive design</li>
+                            <li>Animations and transitions</li>
+                            <li>CSS variables and custom properties</li>
+                        </ul>
+                        
+                        <h4>JavaScript</h4>
+                        <p>JavaScript is a programming language that enables interactive web pages and is an essential part of web applications.</p>
+                        <ul>
+                            <li>DOM manipulation</li>
+                            <li>Event handling</li>
+                            <li>Asynchronous programming</li>
+                            <li>API integration</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Computer Aided Designing -->
+                <div class="course-card fade-in delay-1">
+                    <div class="course-header">
+                        <i class="fas fa-drafting-compass course-icon"></i>
+                        <h3>Computer Aided Designing</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Learn to create digital designs for manufacturing using professional CAD software.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>2D & 3D modeling</li>
+                            <li>Technical drawing</li>
+                            <li>Design optimization</li>
+                        </ul>
+                        <p>Computer Aided Design (CAD) is the use of computer systems to assist in the creation, modification, analysis, or optimization of a design.</p>
+                        <ul>
+                            <li>Creating parametric models</li>
+                            <li>Assembly design and constraints</li>
+                            <li>Material properties and analysis</li>
+                            <li>Blueprint and documentation generation</li>
+                            <li>Integration with manufacturing processes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Computer Aided Cutting -->
+                <div class="course-card fade-in delay-2">
+                    <div class="course-header">
+                        <i class="fas fa-cut course-icon"></i>
+                        <h3>Computer Aided Cutting</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Master precision cutting using computer-controlled machines for various materials.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>Laser cutting</li>
+                            <li>CNC machining</li>
+                            <li>Toolpath creation</li>
+                        </ul>
+                        <p>Computer Aided Cutting involves using computer-controlled machines to precisely cut materials for manufacturing and prototyping.</p>
+                        <ul>
+                            <li>Laser cutting techniques for various materials</li>
+                            <li>CNC router operation and programming</li>
+                            <li>Vinyl cutting for signage and electronics</li>
+                            <li>Toolpath generation and optimization</li>
+                            <li>Material selection and preparation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 3D Printing -->
+                <div class="course-card fade-in delay-3">
+                    <div class="course-header">
+                        <i class="fas fa-cube course-icon"></i>
+                        <h3>3D Printing</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Explore additive manufacturing technologies to create three-dimensional objects.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>FDM printing</li>
+                            <li>SLA printing</li>
+                            <li>Model preparation</li>
+                        </ul>
+                        <p>3D printing or additive manufacturing is the construction of a three-dimensional object from a CAD model or a digital 3D model.</p>
+                        <ul>
+                            <li>Fused Deposition Modeling (FDM) technology</li>
+                            <li>Stereolithography (SLA) printing</li>
+                            <li>Model slicing and support generation</li>
+                            <li>Material properties and selection</li>
+                            <li>Post-processing techniques</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Embedded Systems -->
+                <div class="course-card fade-in">
+                    <div class="course-header">
+                        <i class="fas fa-microchip course-icon"></i>
+                        <h3>Embedded Systems</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Develop skills to create smart devices with microcontrollers and sensors.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>Arduino programming</li>
+                            <li>Sensor integration</li>
+                            <li>IoT applications</li>
+                        </ul>
+                        <p>Embedded systems are computer systems with a dedicated function within a larger mechanical or electrical system.</p>
+                        <ul>
+                            <li>Microcontroller programming (Arduino, ESP32)</li>
+                            <li>Sensor integration and data acquisition</li>
+                            <li>Wireless communication (Bluetooth, WiFi)</li>
+                            <li>Power management for embedded devices</li>
+                            <li>IoT cloud integration</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- PCB Design -->
+                <div class="course-card fade-in delay-1">
+                    <div class="course-header">
+                        <i class="fas fa-project-diagram course-icon"></i>
+                        <h3>PCB Design</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Learn to design and fabricate printed circuit boards for electronic projects.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>Schematic design</li>
+                            <li>PCB layout</li>
+                            <li>Manufacturing process</li>
+                        </ul>
+                        <p>Printed circuit board (PCB) design brings your electronic circuits to life in physical form.</p>
+                        <ul>
+                            <li>Schematic capture and component selection</li>
+                            <li>PCB layout and routing techniques</li>
+                            <li>Design for manufacturability (DFM)</li>
+                            <li>PCB fabrication methods</li>
+                            <li>Surface mount technology (SMT)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- IoT -->
+                <div class="course-card fade-in delay-2">
+                    <div class="course-header">
+                        <i class="fas fa-wifi course-icon"></i>
+                        <h3>Internet of Things</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Connect physical devices to the internet to collect and exchange data.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>Sensor networks</li>
+                            <li>Wireless communication</li>
+                            <li>Cloud integration</li>
+                        </ul>
+                        <p>The Internet of Things (IoT) refers to the network of physical objects embedded with sensors, software, and other technologies to connect and exchange data.</p>
+                        <ul>
+                            <li>IoT architectures and protocols</li>
+                            <li>Edge computing and fog computing</li>
+                            <li>Data analytics for IoT</li>
+                            <li>Security in IoT systems</li>
+                            <li>Cloud platforms for IoT</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Java -->
+                <div class="course-card fade-in delay-3">
+                    <div class="course-header">
+                        <i class="fab fa-java course-icon"></i>
+                        <h3>Java Programming</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Learn object-oriented programming with Java for applications and systems.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>Object-oriented concepts</li>
+                            <li>Data structures</li>
+                            <li>Application development</li>
+                        </ul>
+                        <p>Java is a high-level, class-based, object-oriented programming language designed to have as few implementation dependencies as possible.</p>
+                        <ul>
+                            <li>Java syntax and fundamentals</li>
+                            <li>Object-oriented programming principles</li>
+                            <li>Collections framework</li>
+                            <li>Exception handling</li>
+                            <li>Multithreading</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Networking -->
+                <div class="course-card fade-in">
+                    <div class="course-header">
+                        <i class="fas fa-network-wired course-icon"></i>
+                        <h3>Networking</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Understand computer networks and communication protocols.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>Network architectures</li>
+                            <li>Protocols and standards</li>
+                            <li>Security fundamentals</li>
+                        </ul>
+                        <p>Computer networking is the practice of interfacing two or more computing devices to share data.</p>
+                        <ul>
+                            <li>OSI and TCP/IP models</li>
+                            <li>IP addressing and subnetting</li>
+                            <li>Routing and switching</li>
+                            <li>Network security principles</li>
+                            <li>Wireless networking</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- AI/ML -->
+                <div class="course-card coming-soon fade-in delay-1">
+                    <div class="course-header">
+                        <i class="fas fa-robot course-icon"></i>
+                        <h3>AI/ML</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Introduction to artificial intelligence and machine learning concepts.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>Machine learning algorithms</li>
+                            <li>Neural networks</li>
+                            <li>Data preprocessing</li>
+                        </ul>
+                        <p>Artificial intelligence (AI) and machine learning (ML) involve creating systems that can learn from and make decisions based on data.</p>
+                        <ul>
+                            <li>Supervised and unsupervised learning</li>
+                            <li>Neural networks and deep learning</li>
+                            <li>Natural language processing</li>
+                            <li>Computer vision</li>
+                            <li>Model evaluation and optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Digital FABLAB</div>
+                    <p class="footer-description">
+                        My portfolio showcasing projects and skills developed through the Digital Fabrication Laboratory program.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://kamranali-996.github.io/portfolio/" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/kamran-ali-74061232a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/kame_ali_18?igsh=NzEzZzc2ZTlzdWc3" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:kamranaliali996@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="courses.html">Modules</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-title">Modules</h4>
+                    <ul class="footer-links">
+                        <li><a href="courses.html#web-dev">Web Development</a></li>
+                        <li><a href="courses.html#cad">CAD Design</a></li>
+                        <li><a href="courses.html#3d-print">3D Printing</a></li>
+                        <li><a href="courses.html#embedded">Embedded Systems</a></li>
+                        <li><a href="courses.html#iot">IoT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FabLab Documentation</a></li>
+                        <li><a href="#">Learning Materials</a></li>
+                        <li><a href="#">Project Gallery</a></li>
+                        <li><a href="#">Useful Tools</a></li>
+                        <li><a href="#">My Resume</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Digital FABLAB Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        // Check for saved user preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+        
+        // Intersection Observer for scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
