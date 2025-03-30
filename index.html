@@ -21,11 +21,22 @@
             --text-gradient: linear-gradient(to right, #0ea5e9, #6366f1, #8b5cf6);
         }
         
+        /* Dark mode variables */
+        .dark-mode {
+            --dark-color: #f8fafc;
+            --light-color: #1e293b;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         body {
@@ -60,6 +71,10 @@
             transition: all 0.3s ease;
         }
         
+        .dark-mode .navbar {
+            background-color: rgba(30, 41, 59, 0.9);
+        }
+        
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -80,6 +95,7 @@
         .nav-menu {
             display: flex;
             gap: 1.5rem;
+            align-items: center;
         }
         
         .nav-link {
@@ -88,6 +104,10 @@
             font-weight: 500;
             position: relative;
             transition: all 0.3s ease;
+        }
+        
+        .dark-mode .nav-link {
+            color: var(--light-color);
         }
         
         .nav-link::after {
@@ -107,6 +127,25 @@
         
         .nav-link:hover::after {
             width: 100%;
+        }
+        
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode .dark-mode-toggle {
+            color: var(--light-color);
+        }
+        
+        .dark-mode-toggle:hover {
+            background-color: rgba(99, 102, 241, 0.1);
         }
         
         /* Hero Section */
@@ -132,6 +171,10 @@
             z-index: -1;
         }
         
+        .dark-mode .hero::before {
+            opacity: 0.1;
+        }
+        
         .hero-content {
             width: 50%;
             padding-right: 2rem;
@@ -154,6 +197,11 @@
             color: var(--dark-color);
             opacity: 0.8;
             margin-bottom: 2rem;
+        }
+        
+        .dark-mode .hero-subtitle {
+            color: var(--light-color);
+            opacity: 0.9;
         }
         
         .hero-image {
@@ -210,6 +258,10 @@
             border: 1px solid var(--primary-color);
         }
         
+        .dark-mode .btn-secondary {
+            color: var(--light-color);
+        }
+        
         .btn-secondary:hover {
             background-color: rgba(99, 102, 241, 0.1);
             transform: translateY(-3px);
@@ -232,6 +284,10 @@
             opacity: 0.05;
             clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
             z-index: -1;
+        }
+        
+        .dark-mode .about::before {
+            opacity: 0.1;
         }
         
         .section-header {
@@ -265,6 +321,11 @@
             margin: 0 auto;
         }
         
+        .dark-mode .section-subtitle {
+            color: var(--light-color);
+            opacity: 0.9;
+        }
+        
         .about-content {
             display: flex;
             align-items: center;
@@ -293,6 +354,12 @@
         .about-description {
             margin-bottom: 2rem;
             font-size: 1.05rem;
+            color: var(--dark-color);
+            opacity: 0.9;
+        }
+        
+        .dark-mode .about-description {
+            color: var(--light-color);
         }
         
         .skills {
@@ -310,10 +377,111 @@
             font-size: 0.9rem;
         }
         
+        .download-resume {
+            margin-top: 2rem;
+        }
+        
+        /* Projects Section */
+        .projects {
+            padding: 8rem 0;
+            background-color: rgba(248, 250, 252, 0.8);
+        }
+        
+        .dark-mode .projects {
+            background-color: rgba(15, 23, 42, 0.8);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .dark-mode .project-title {
+            color: var(--light-color);
+        }
+        
+        .project-description {
+            color: var(--dark-color);
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        
+        .dark-mode .project-description {
+            color: var(--light-color);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-tag {
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+        
+        .project-link {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-image: var(--primary-gradient);
+            color: var(--light-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .project-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5);
+        }
+        
         /* Courses Section */
         .courses {
             padding: 8rem 0;
             background-color: rgba(248, 250, 252, 0.8);
+        }
+        
+        .dark-mode .courses {
+            background-color: rgba(15, 23, 42, 0.8);
         }
         
         .courses-grid {
@@ -396,6 +564,10 @@
             opacity: 0.8;
         }
         
+        .dark-mode .course-content p {
+            color: var(--light-color);
+        }
+        
         .course-content h4 {
             color: var(--primary-color);
             margin-bottom: 1rem;
@@ -410,6 +582,12 @@
             margin-bottom: 0.5rem;
             position: relative;
             padding-left: 1.5rem;
+            color: var(--dark-color);
+            opacity: 0.9;
+        }
+        
+        .dark-mode .course-content li {
+            color: var(--light-color);
         }
         
         .course-content li::before {
@@ -448,6 +626,10 @@
             margin-top: 1rem;
         }
         
+        .dark-mode .course-details {
+            background-color: rgba(30, 41, 59, 0.5);
+        }
+        
         .course-details-content {
             padding: 1.5rem;
         }
@@ -475,6 +657,10 @@
             z-index: -1;
         }
         
+        .dark-mode .contact::after {
+            opacity: 0.1;
+        }
+        
         .contact-container {
             display: flex;
             justify-content: center;
@@ -493,6 +679,17 @@
             margin-bottom: 1.5rem;
         }
         
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .dark-mode .form-label {
+            color: var(--light-color);
+        }
+        
         .form-control {
             width: 100%;
             padding: 1rem;
@@ -500,6 +697,13 @@
             border-radius: 8px;
             font-size: 1rem;
             transition: all 0.3s ease;
+            background-color: var(--card-bg);
+            color: var(--dark-color);
+        }
+        
+        .dark-mode .form-control {
+            border-color: rgba(248, 250, 252, 0.1);
+            color: var(--light-color);
         }
         
         .form-control:focus {
@@ -513,11 +717,22 @@
             resize: vertical;
         }
         
+        .error-message {
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--dark-color);
             color: var(--light-color);
             padding: 4rem 0 2rem;
+        }
+        
+        .dark-mode footer {
+            background-color: #0f172a;
         }
         
         .footer-content {
@@ -647,6 +862,11 @@
         
         .profile-bio {
             margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .dark-mode .profile-bio {
+            color: var(--light-color);
         }
         
         .profile-info {
@@ -659,6 +879,11 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
+            color: var(--dark-color);
+        }
+        
+        .dark-mode .profile-item {
+            color: var(--light-color);
         }
         
         .profile-item i {
@@ -719,7 +944,7 @@
                 font-size: 2.5rem;
             }
             
-            .courses-grid {
+            .courses-grid, .projects-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -740,6 +965,39 @@
         .animate-float {
             animation: float 5s ease-in-out infinite;
         }
+        
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        /* Delay classes for staggered animations */
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
     </style>
 </head>
 <body>
@@ -749,21 +1007,30 @@
             <div class="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
-                <a href="#courses" class="nav-link">Courses</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#courses" class="nav-link">Modules</a>
                 <a href="#contact" class="nav-link">Contact</a>
+                <button class="dark-mode-toggle" id="darkModeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
     
     <section id="home" class="hero">
         <div class="container" style="display: flex; align-items: center;">
-            <div class="hero-content">
+            <div class="hero-content fade-in">
                 <h1 class="hero-heading">Digital <span class="gradient-text">FABLAB</span> Portfolio</h1>
                 <p class="hero-subtitle">From imagination to innovation - fabricate your ideas using cutting-edge digital fabrication technologies.</p>
                 <div class="hero-buttons">
-                    <a href="#courses" class="btn btn-primary"><i class="fas fa-book"></i> Explore Courses</a>
+                    <a href="#courses" class="btn btn-primary"><i class="fas fa-book"></i> Explore Modules</a>
                     <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Me</a>
                 </div>
+            </div>
+            <div class="hero-image fade-in delay-1">
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Digital Fabrication" class="floating-image">
+            </div>
+        </div>
     </section>
     
     <!-- About Section -->
@@ -774,7 +1041,7 @@
                 <p class="section-subtitle">Learn about my journey, skills, and passion for digital fabrication technologies</p>
             </div>
             <div class="about-content">
-                <div class="about-image">
+                <div class="about-image fade-in">
                     <div class="profile-card">
                         <div class="profile-header">
                             <img src="Myimage.jpeg" alt="Profile Image" class="profile-img">
@@ -797,10 +1064,13 @@
                                     <span>Bachelor Of Engineering In Information And Technology</span>
                                 </div>
                             </div>
+                            <div class="download-resume">
+                                <a href="#" class="btn btn-primary" id="downloadResume"><i class="fas fa-download"></i> Download Resume</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="about-text">
+                <div class="about-text fade-in delay-1">
                     <h3 class="about-title">Designing the <span class="gradient-text">Future</span></h3>
                     <p class="about-description">
                         I'm currently enrolled in the Digital FABLAB program, exploring various technology domains to build a strong foundation in digital fabrication and innovative technologies. I'm passionate about creating solutions that bridge the digital and physical worlds.
@@ -827,16 +1097,75 @@
         </div>
     </section>
     
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Projects</h2>
+                <p class="section-subtitle">Showcasing my work in digital fabrication and technology</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Web Development Project" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Portfolio Website</h3>
+                        <p class="project-description">A responsive portfolio website built with HTML, CSS, and JavaScript to showcase my projects and skills.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML/CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Responsive Design</span>
+                        </div>
+                        <a href="#" class="project-link">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="3D Printed Object" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">OpenAI Chatbot</h3>
+                        <p class="project-description">Built an AI-powered chatbot as part of a NxtWave workshop, exploring LLMs, OpenAI, and LangChain.
+                            
+                            This project introduced me to practical applications of Large Language Models and provided hands-on experience with AI tools and frameworks.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">OpenAI API</span>
+                            <span class="project-tag">LangChain</span>
+                            <span class="project-tag">Python</span>   
+                        </div>
+                        <a href="#" class="project-link">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card fade-in delay-3">
+                    <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Laser Cut Project" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">AI-Powered Educational Platformt</h3>
+                        <p class="project-description">Created a website for underprivileged children with AI-powered flashcards that generate content based on user input during the Innovo Hackathon.
+                            
+                            The platform was designed to make education more accessible and personalized for children with limited resources. This project combined web development skills with practical AI application.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Web Development</span>
+                            <span class="project-tag">AI Integration</span> 
+                        </div>
+                        <a href="#" class="project-link">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Courses Section -->
     <section id="courses" class="courses">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">My Courses</h2>
+                <h2 class="section-title">Modules</h2>
                 <p class="section-subtitle">Explore the various technologies and skills I'm developing through my coursework</p>
             </div>
             <div class="courses-grid">
                 <!-- Web Development -->
-                <div class="course-card">
+                <div class="course-card fade-in">
                     <div class="course-header">
                         <i class="fas fa-code course-icon"></i>
                         <h3>Web Development</h3>
@@ -885,7 +1214,7 @@
                 </div>
                 
                 <!-- Computer Aided Designing -->
-                <div class="course-card">
+                <div class="course-card fade-in delay-1">
                     <div class="course-header">
                         <i class="fas fa-drafting-compass course-icon"></i>
                         <h3>Computer Aided Designing</h3>
@@ -915,7 +1244,7 @@
                 </div>
                 
                 <!-- Computer Aided Cutting -->
-                <div class="course-card">
+                <div class="course-card fade-in delay-2">
                     <div class="course-header">
                         <i class="fas fa-cut course-icon"></i>
                         <h3>Computer Aided Cutting</h3>
@@ -945,7 +1274,7 @@
                 </div>
                 
                 <!-- 3D Printing -->
-                <div class="course-card">
+                <div class="course-card fade-in delay-3">
                     <div class="course-header">
                         <i class="fas fa-cube course-icon"></i>
                         <h3>3D Printing</h3>
@@ -975,7 +1304,7 @@
                 </div>
                 
                 <!-- Embedded Systems -->
-                <div class="course-card">
+                <div class="course-card fade-in">
                     <div class="course-header">
                         <i class="fas fa-microchip course-icon"></i>
                         <h3>Embedded Systems</h3>
@@ -1005,7 +1334,7 @@
                 </div>
                 
                 <!-- PCB Design -->
-                <div class="course-card">
+                <div class="course-card fade-in delay-1">
                     <div class="course-header">
                         <i class="fas fa-project-diagram course-icon"></i>
                         <h3>PCB Design</h3>
@@ -1033,6 +1362,126 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- IoT -->
+                <div class="course-card fade-in delay-2">
+                    <div class="course-header">
+                        <i class="fas fa-wifi course-icon"></i>
+                        <h3>Internet of Things</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Connect physical devices to the internet to collect and exchange data.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>Sensor networks</li>
+                            <li>Wireless communication</li>
+                            <li>Cloud integration</li>
+                        </ul>
+                        <button class="view-details" onclick="toggleDetails('iot')">View Details</button>
+                        <div id="iot" class="course-details">
+                            <div class="course-details-content">
+                                <p>The Internet of Things (IoT) refers to the network of physical objects embedded with sensors, software, and other technologies to connect and exchange data.</p>
+                                <ul>
+                                    <li>IoT architectures and protocols</li>
+                                    <li>Edge computing and fog computing</li>
+                                    <li>Data analytics for IoT</li>
+                                    <li>Security in IoT systems</li>
+                                    <li>Cloud platforms for IoT</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Java -->
+                <div class="course-card fade-in delay-3">
+                    <div class="course-header">
+                        <i class="fab fa-java course-icon"></i>
+                        <h3>Java Programming</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Learn object-oriented programming with Java for applications and systems.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>Object-oriented concepts</li>
+                            <li>Data structures</li>
+                            <li>Application development</li>
+                        </ul>
+                        <button class="view-details" onclick="toggleDetails('java')">View Details</button>
+                        <div id="java" class="course-details">
+                            <div class="course-details-content">
+                                <p>Java is a high-level, class-based, object-oriented programming language designed to have as few implementation dependencies as possible.</p>
+                                <ul>
+                                    <li>Java syntax and fundamentals</li>
+                                    <li>Object-oriented programming principles</li>
+                                    <li>Collections framework</li>
+                                    <li>Exception handling</li>
+                                    <li>Multithreading</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Networking -->
+                <div class="course-card fade-in">
+                    <div class="course-header">
+                        <i class="fas fa-network-wired course-icon"></i>
+                        <h3>Networking</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Understand computer networks and communication protocols.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>Network architectures</li>
+                            <li>Protocols and standards</li>
+                            <li>Security fundamentals</li>
+                        </ul>
+                        <button class="view-details" onclick="toggleDetails('networking')">View Details</button>
+                        <div id="networking" class="course-details">
+                            <div class="course-details-content">
+                                <p>Computer networking is the practice of interfacing two or more computing devices to share data.</p>
+                                <ul>
+                                    <li>OSI and TCP/IP models</li>
+                                    <li>IP addressing and subnetting</li>
+                                    <li>Routing and switching</li>
+                                    <li>Network security principles</li>
+                                    <li>Wireless networking</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI/ML -->
+                <div class="course-card coming-soon fade-in delay-1">
+                    <div class="course-header">
+                        <i class="fas fa-robot course-icon"></i>
+                        <h3>AI/ML</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Introduction to artificial intelligence and machine learning concepts.</p>
+                        <h4>Key Skills:</h4>
+                        <ul>
+                            <li>Machine learning algorithms</li>
+                            <li>Neural networks</li>
+                            <li>Data preprocessing</li>
+                        </ul>
+                        <button class="view-details" onclick="toggleDetails('ai-ml')">View Details</button>
+                        <div id="ai-ml" class="course-details">
+                            <div class="course-details-content">
+                                <p>Artificial intelligence (AI) and machine learning (ML) involve creating systems that can learn from and make decisions based on data.</p>
+                                <ul>
+                                    <li>Supervised and unsupervised learning</li>
+                                    <li>Neural networks and deep learning</li>
+                                    <li>Natural language processing</li>
+                                    <li>Computer vision</li>
+                                    <li>Model evaluation and optimization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1044,16 +1493,22 @@
                 <p class="section-subtitle">Send me a message using the form below</p>
             </div>
             <div class="contact-container">
-                <div class="contact-form">
-                    <form>
+                <div class="contact-form fade-in">
+                    <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                            <div class="error-message" id="nameError">Please enter your name</div>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                            <div class="error-message" id="emailError">Please enter a valid email</div>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea id="message" class="form-control" placeholder="Enter your message" required></textarea>
+                            <div class="error-message" id="messageError">Please enter your message</div>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">
                             <i class="fas fa-paper-plane"></i> Send Message
@@ -1074,7 +1529,7 @@
                         My portfolio showcasing projects and skills developed through the Digital Fabrication Laboratory program.
                     </p>
                     <div class="social-icons">
-                        <a href=" https://kamranali-996.github.io/portfolio/" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://kamranali-996.github.io/portfolio/" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/kamran-ali-74061232a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://www.instagram.com/kame_ali_18?igsh=NzEzZzc2ZTlzdWc3" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:kamranaliali996@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
@@ -1085,17 +1540,19 @@
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#courses">Modules</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4 class="footer-title">Courses</h4>
+                    <h4 class="footer-title">Modules</h4>
                     <ul class="footer-links">
                         <li><a href="#">Web Development</a></li>
                         <li><a href="#">CAD Design</a></li>
                         <li><a href="#">3D Printing</a></li>
                         <li><a href="#">Embedded Systems</a></li>
+                        <li><a href="#">IoT</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -1105,6 +1562,7 @@
                         <li><a href="#">Learning Materials</a></li>
                         <li><a href="#">Project Gallery</a></li>
                         <li><a href="#">Useful Tools</a></li>
+                        <li><a href="#">My Resume</a></li>
                     </ul>
                 </div>
             </div>
@@ -1115,6 +1573,26 @@
     </footer>
 
     <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+        
         function toggleDetails(id) {
             const details = document.getElementById(id);
             details.classList.toggle('active');
@@ -1144,6 +1622,79 @@
             } else {
                 navbar.style.boxShadow = 'var(--shadow)';
             }
+        });
+        
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const messageError = document.getElementById('messageError');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            // Validate name
+            if (nameInput.value.trim() === '') {
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+            
+            // Validate message
+            if (messageInput.value.trim() === '') {
+                messageError.style.display = 'block';
+                isValid = false;
+            } else {
+                messageError.style.display = 'none';
+            }
+            
+            if (isValid) {
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            }
+        });
+        
+        // Download resume button
+        const downloadResume = document.getElementById('downloadResume');
+        downloadResume.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Resume download would start here. In a real implementation, this would download your resume PDF.');
+            // In a real implementation, you would link to your actual resume file
+            // window.location.href = 'path/to/your/resume.pdf';
+        });
+        
+        // Intersection Observer for scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
         });
     </script>
 </body>
