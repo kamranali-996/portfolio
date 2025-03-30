@@ -1067,7 +1067,9 @@
                                 </div>
                             </div>
                             <div class="download-resume">
-                                <a href="#" class="btn btn-primary" id="downloadResume"><i class="fas fa-download"></i> Download Resume</a>
+                                <a href="my_resume.pdf" class="btn btn-primary" download="Kamran_Ali_Resume.pdf">
+                                    <i class="fas fa-download"></i> Download Resume
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -1428,13 +1430,11 @@
         });
         
         // Download resume button
-        const downloadResume = document.getElementById('downloadResume');
-        downloadResume.addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Resume download would start here. In a real implementation, this would download your resume PDF.');
-            // In a real implementation, you would link to your actual resume file
-            // window.location.href = 'path/to/your/resume.pdf';
-        });
+        document.getElementById('downloadResume').addEventListener('click', function(e) {
+    // Let the natural download happen - don't prevent default
+    // You can add tracking or analytics here if needed
+    console.log('Resume download initiated');
+});
         
         // Intersection Observer for scroll animations
         const fadeElements = document.querySelectorAll('.fade-in');
