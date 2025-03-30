@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital FABLAB Portfolio</title>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -1008,7 +1010,7 @@
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#projects" class="nav-link">Projects</a>
-                <a href="#courses" class="nav-link">Modules</a>
+                <a href="courses.html" class="nav-link">Modules</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <button class="dark-mode-toggle" id="darkModeToggle">
                     <i class="fas fa-moon"></i>
@@ -1155,370 +1157,127 @@
             </div>
         </div>
     </section>
-    
     <!-- Courses Section -->
-    <section id="courses" class="courses">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Modules</h2>
-                <p class="section-subtitle">Explore the various technologies and skills I'm developing through my coursework</p>
+<!-- Courses Section -->
+<!-- Courses Section -->
+<section id="courses" class="courses">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">All Modules</h2>
+            <p class="section-subtitle">Explore our digital fabrication courses</p>
+        </div>
+        
+        <div class="courses-grid">
+            <!-- Web Development -->
+            <div class="course-card">
+                <div class="course-header" style="background: #0ea5e9;">
+                    <i class="fas fa-code"></i>
+                    <h3>Web Development</h3>
+                </div>
+                <div class="course-content">
+                    <p>Build websites using HTML, CSS, and JavaScript.</p>
+                    <a href="web-development.html" class="view-details">View Details</a>
+                </div>
             </div>
-            <div class="courses-grid">
-                <!-- Web Development -->
-                <div class="course-card fade-in">
-                    <div class="course-header">
-                        <i class="fas fa-code course-icon"></i>
-                        <h3>Web Development</h3>
-                    </div>
-                    <div class="course-content">
-                        <p>Currently learning the foundations of web development to create interactive and responsive websites.</p>
-                        <h4>Key Skills:</h4>
-                        <ul>
-                            <li>HTML - Structure and semantics</li>
-                            <li>CSS - Styling and layouts</li>
-                            <li>JavaScript - Interactivity</li>
-                        </ul>
-                        <button class="view-details" onclick="toggleDetails('web-dev')">View Details</button>
-                        <div id="web-dev" class="course-details">
-                            <div class="course-details-content">
-                                <h4>HTML (HyperText Markup Language)</h4>
-                                <p>HTML is the standard markup language for creating web pages. It defines the structure and content of web pages using various elements and tags.</p>
-                                <ul>
-                                    <li>Semantic HTML elements</li>
-                                    <li>Forms and input types</li>
-                                    <li>Multimedia integration</li>
-                                    <li>Document structure</li>
-                                </ul>
-                                
-                                <h4>CSS (Cascading Style Sheets)</h4>
-                                <p>CSS is a style sheet language used for describing the presentation of a document written in HTML. It controls the layout, colors, and visual appearance of web pages.</p>
-                                <ul>
-                                    <li>Box model and layout</li>
-                                    <li>Flexbox and Grid systems</li>
-                                    <li>Responsive design</li>
-                                    <li>Animations and transitions</li>
-                                    <li>CSS variables and custom properties</li>
-                                </ul>
-                                
-                                <h4>JavaScript</h4>
-                                <p>JavaScript is a programming language that enables interactive web pages and is an essential part of web applications.</p>
-                                <ul>
-                                    <li>DOM manipulation</li>
-                                    <li>Event handling</li>
-                                    <li>Asynchronous programming</li>
-                                    <li>API integration</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+
+            <!-- CAD Design -->
+            <div class="course-card">
+                <div class="course-header" style="background: #6366f1;">
+                    <i class="fas fa-drafting-compass"></i>
+                    <h3>CAD Design</h3>
                 </div>
-                
-                <!-- Computer Aided Designing -->
-                <div class="course-card fade-in delay-1">
-                    <div class="course-header">
-                        <i class="fas fa-drafting-compass course-icon"></i>
-                        <h3>Computer Aided Designing</h3>
-                    </div>
-                    <div class="course-content">
-                        <p>Learn to create digital designs for manufacturing using professional CAD software.</p>
-                        <h4>Key Skills:</h4>
-                        <ul>
-                            <li>2D & 3D modeling</li>
-                            <li>Technical drawing</li>
-                            <li>Design optimization</li>
-                        </ul>
-                        <button class="view-details" onclick="toggleDetails('cad')">View Details</button>
-                        <div id="cad" class="course-details">
-                            <div class="course-details-content">
-                                <p>Computer Aided Design (CAD) is the use of computer systems to assist in the creation, modification, analysis, or optimization of a design.</p>
-                                <ul>
-                                    <li>Creating parametric models</li>
-                                    <li>Assembly design and constraints</li>
-                                    <li>Material properties and analysis</li>
-                                    <li>Blueprint and documentation generation</li>
-                                    <li>Integration with manufacturing processes</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div class="course-content">
+                    <p>Create 2D/3D models with computer-aided design.</p>
+                    <a href="cad-design.html" class="view-details">View Details</a>
                 </div>
-                
-                <!-- Computer Aided Cutting -->
-                <div class="course-card fade-in delay-2">
-                    <div class="course-header">
-                        <i class="fas fa-cut course-icon"></i>
-                        <h3>Computer Aided Cutting</h3>
-                    </div>
-                    <div class="course-content">
-                        <p>Master precision cutting using computer-controlled machines for various materials.</p>
-                        <h4>Key Skills:</h4>
-                        <ul>
-                            <li>Laser cutting</li>
-                            <li>CNC machining</li>
-                            <li>Toolpath creation</li>
-                        </ul>
-                        <button class="view-details" onclick="toggleDetails('cac')">View Details</button>
-                        <div id="cac" class="course-details">
-                            <div class="course-details-content">
-                                <p>Computer Aided Cutting involves using computer-controlled machines to precisely cut materials for manufacturing and prototyping.</p>
-                                <ul>
-                                    <li>Laser cutting techniques for various materials</li>
-                                    <li>CNC router operation and programming</li>
-                                    <li>Vinyl cutting for signage and electronics</li>
-                                    <li>Toolpath generation and optimization</li>
-                                    <li>Material selection and preparation</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+
+            <!-- 3D Printing -->
+            <div class="course-card">
+                <div class="course-header" style="background: #8b5cf6;">
+                    <i class="fas fa-cube"></i>
+                    <h3>3D Printing</h3>
                 </div>
-                
-                <!-- 3D Printing -->
-                <div class="course-card fade-in delay-3">
-                    <div class="course-header">
-                        <i class="fas fa-cube course-icon"></i>
-                        <h3>3D Printing</h3>
-                    </div>
-                    <div class="course-content">
-                        <p>Explore additive manufacturing technologies to create three-dimensional objects.</p>
-                        <h4>Key Skills:</h4>
-                        <ul>
-                            <li>FDM printing</li>
-                            <li>SLA printing</li>
-                            <li>Model preparation</li>
-                        </ul>
-                        <button class="view-details" onclick="toggleDetails('3d-print')">View Details</button>
-                        <div id="3d-print" class="course-details">
-                            <div class="course-details-content">
-                                <p>3D printing or additive manufacturing is the construction of a three-dimensional object from a CAD model or a digital 3D model.</p>
-                                <ul>
-                                    <li>Fused Deposition Modeling (FDM) technology</li>
-                                    <li>Stereolithography (SLA) printing</li>
-                                    <li>Model slicing and support generation</li>
-                                    <li>Material properties and selection</li>
-                                    <li>Post-processing techniques</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div class="course-content">
+                    <p>Learn additive manufacturing techniques.</p>
+                    <a href="3d-printing.html" class="view-details">View Details</a>
                 </div>
-                
-                <!-- Embedded Systems -->
-                <div class="course-card fade-in">
-                    <div class="course-header">
-                        <i class="fas fa-microchip course-icon"></i>
-                        <h3>Embedded Systems</h3>
-                    </div>
-                    <div class="course-content">
-                        <p>Develop skills to create smart devices with microcontrollers and sensors.</p>
-                        <h4>Key Skills:</h4>
-                        <ul>
-                            <li>Arduino programming</li>
-                            <li>Sensor integration</li>
-                            <li>IoT applications</li>
-                        </ul>
-                        <button class="view-details" onclick="toggleDetails('embedded')">View Details</button>
-                        <div id="embedded" class="course-details">
-                            <div class="course-details-content">
-                                <p>Embedded systems are computer systems with a dedicated function within a larger mechanical or electrical system.</p>
-                                <ul>
-                                    <li>Microcontroller programming (Arduino, ESP32)</li>
-                                    <li>Sensor integration and data acquisition</li>
-                                    <li>Wireless communication (Bluetooth, WiFi)</li>
-                                    <li>Power management for embedded devices</li>
-                                    <li>IoT cloud integration</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+
+            <!-- Embedded Systems -->
+            <div class="course-card">
+                <div class="course-header" style="background: #10b981;">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Embedded Systems</h3>
                 </div>
-                
-                <!-- PCB Design -->
-                <div class="course-card fade-in delay-1">
-                    <div class="course-header">
-                        <i class="fas fa-project-diagram course-icon"></i>
-                        <h3>PCB Design</h3>
-                    </div>
-                    <div class="course-content">
-                        <p>Learn to design and fabricate printed circuit boards for electronic projects.</p>
-                        <h4>Key Skills:</h4>
-                        <ul>
-                            <li>Schematic design</li>
-                            <li>PCB layout</li>
-                            <li>Manufacturing process</li>
-                        </ul>
-                        <button class="view-details" onclick="toggleDetails('pcb')">View Details</button>
-                        <div id="pcb" class="course-details">
-                            <div class="course-details-content">
-                                <p>Printed circuit board (PCB) design brings your electronic circuits to life in physical form.</p>
-                                <ul>
-                                    <li>Schematic capture and component selection</li>
-                                    <li>PCB layout and routing techniques</li>
-                                    <li>Design for manufacturability (DFM)</li>
-                                    <li>PCB fabrication methods</li>
-                                    <li>Surface mount technology (SMT)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div class="course-content">
+                    <p>Program microcontrollers and sensors.</p>
+                    <a href="embedded-systems.html" class="view-details">View Details</a>
                 </div>
-                
-                <!-- IoT -->
-                <div class="course-card fade-in delay-2">
-                    <div class="course-header">
-                        <i class="fas fa-wifi course-icon"></i>
-                        <h3>Internet of Things</h3>
-                    </div>
-                    <div class="course-content">
-                        <p>Connect physical devices to the internet to collect and exchange data.</p>
-                        <h4>Key Skills:</h4>
-                        <ul>
-                            <li>Sensor networks</li>
-                            <li>Wireless communication</li>
-                            <li>Cloud integration</li>
-                        </ul>
-                        <button class="view-details" onclick="toggleDetails('iot')">View Details</button>
-                        <div id="iot" class="course-details">
-                            <div class="course-details-content">
-                                <p>The Internet of Things (IoT) refers to the network of physical objects embedded with sensors, software, and other technologies to connect and exchange data.</p>
-                                <ul>
-                                    <li>IoT architectures and protocols</li>
-                                    <li>Edge computing and fog computing</li>
-                                    <li>Data analytics for IoT</li>
-                                    <li>Security in IoT systems</li>
-                                    <li>Cloud platforms for IoT</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+
+            <!-- PCB Design -->
+            <div class="course-card">
+                <div class="course-header" style="background: #f59e0b;">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>PCB Design</h3>
                 </div>
-                
-                <!-- Java -->
-                <div class="course-card fade-in delay-3">
-                    <div class="course-header">
-                        <i class="fab fa-java course-icon"></i>
-                        <h3>Java Programming</h3>
-                    </div>
-                    <div class="course-content">
-                        <p>Learn object-oriented programming with Java for applications and systems.</p>
-                        <h4>Key Skills:</h4>
-                        <ul>
-                            <li>Object-oriented concepts</li>
-                            <li>Data structures</li>
-                            <li>Application development</li>
-                        </ul>
-                        <button class="view-details" onclick="toggleDetails('java')">View Details</button>
-                        <div id="java" class="course-details">
-                            <div class="course-details-content">
-                                <p>Java is a high-level, class-based, object-oriented programming language designed to have as few implementation dependencies as possible.</p>
-                                <ul>
-                                    <li>Java syntax and fundamentals</li>
-                                    <li>Object-oriented programming principles</li>
-                                    <li>Collections framework</li>
-                                    <li>Exception handling</li>
-                                    <li>Multithreading</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div class="course-content">
+                    <p>Design printed circuit boards for electronics.</p>
+                    <a href="pcb-design.html" class="view-details">View Details</a>
                 </div>
-                
-                <!-- Networking -->
-                <div class="course-card fade-in">
-                    <div class="course-header">
-                        <i class="fas fa-network-wired course-icon"></i>
-                        <h3>Networking</h3>
-                    </div>
-                    <div class="course-content">
-                        <p>Understand computer networks and communication protocols.</p>
-                        <h4>Key Skills:</h4>
-                        <ul>
-                            <li>Network architectures</li>
-                            <li>Protocols and standards</li>
-                            <li>Security fundamentals</li>
-                        </ul>
-                        <button class="view-details" onclick="toggleDetails('networking')">View Details</button>
-                        <div id="networking" class="course-details">
-                            <div class="course-details-content">
-                                <p>Computer networking is the practice of interfacing two or more computing devices to share data.</p>
-                                <ul>
-                                    <li>OSI and TCP/IP models</li>
-                                    <li>IP addressing and subnetting</li>
-                                    <li>Routing and switching</li>
-                                    <li>Network security principles</li>
-                                    <li>Wireless networking</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+
+            <!-- IoT -->
+            <div class="course-card">
+                <div class="course-header" style="background: #ec4899;">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Internet of Things</h3>
                 </div>
-                
-                <!-- AI/ML -->
-                <div class="course-card coming-soon fade-in delay-1">
-                    <div class="course-header">
-                        <i class="fas fa-robot course-icon"></i>
-                        <h3>AI/ML</h3>
-                    </div>
-                    <div class="course-content">
-                        <p>Introduction to artificial intelligence and machine learning concepts.</p>
-                        <h4>Key Skills:</h4>
-                        <ul>
-                            <li>Machine learning algorithms</li>
-                            <li>Neural networks</li>
-                            <li>Data preprocessing</li>
-                        </ul>
-                        <button class="view-details" onclick="toggleDetails('ai-ml')">View Details</button>
-                        <div id="ai-ml" class="course-details">
-                            <div class="course-details-content">
-                                <p>Artificial intelligence (AI) and machine learning (ML) involve creating systems that can learn from and make decisions based on data.</p>
-                                <ul>
-                                    <li>Supervised and unsupervised learning</li>
-                                    <li>Neural networks and deep learning</li>
-                                    <li>Natural language processing</li>
-                                    <li>Computer vision</li>
-                                    <li>Model evaluation and optimization</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div class="course-content">
+                    <p>Connect devices to the cloud.</p>
+                    <a href="iot.html" class="view-details">View Details</a>
+                </div>
+            </div>
+
+            <!-- Java Programming -->
+            <div class="course-card">
+                <div class="course-header" style="background: #ef4444;">
+                    <i class="fab fa-java"></i>
+                    <h3>Java Programming</h3>
+                </div>
+                <div class="course-content">
+                    <p>Learn object-oriented programming with Java.</p>
+                    <a href="java-programming.html" class="view-details">View Details</a>
+                </div>
+            </div>
+
+            <!-- Networking -->
+            <div class="course-card">
+                <div class="course-header" style="background: #6b7280;">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Networking</h3>
+                </div>
+                <div class="course-content">
+                    <p>Understand computer networks and protocols.</p>
+                    <a href="networking.html" class="view-details">View Details</a>
+                </div>
+            </div>
+
+            <!-- AI/ML -->
+            <div class="course-card">
+                <div class="course-header" style="background: #14b8a6;">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI/ML</h3>
+                </div>
+                <div class="course-content">
+                    <p>Introduction to artificial intelligence.</p>
+                    <a href="ai-ml.html" class="view-details">View Details</a>
                 </div>
             </div>
         </div>
-    </section>
-    
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Contact Me</h2>
-                <p class="section-subtitle">Send me a message using the form below</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-form fade-in">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Your Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-                            <div class="error-message" id="nameError">Please enter your name</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Your Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                            <div class="error-message" id="emailError">Please enter a valid email</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Your Message</label>
-                            <textarea id="message" class="form-control" placeholder="Enter your message" required></textarea>
-                            <div class="error-message" id="messageError">Please enter your message</div>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+    </div>
+</section>
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1548,11 +1307,12 @@
                 <div class="footer-links">
                     <h4 class="footer-title">Modules</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">CAD Design</a></li>
-                        <li><a href="#">3D Printing</a></li>
-                        <li><a href="#">Embedded Systems</a></li>
-                        <li><a href="#">IoT</a></li>
+                        <li><a href="web-development.html">Web Development</a></li>
+                        <li><a href="cad-design.html">CAD Design</a></li>
+                        <li><a href="3d-printing.html">3D Printing</a></li>
+                        <li><a href="embedded-systems.html">Embedded Systems</a></li>
+                        <li><a href="iot.html">IoT</a></li>
+                        <!-- Add links for all other modules -->
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -1593,17 +1353,17 @@
             }
         });
         
-        function toggleDetails(id) {
-            const details = document.getElementById(id);
-            details.classList.toggle('active');
+        // function toggleDetails(id) {
+        //     const details = document.getElementById(id);
+        //     details.classList.toggle('active');
             
-            const button = details.previousElementSibling;
-            if (details.classList.contains('active')) {
-                button.textContent = 'Hide Details';
-            } else {
-                button.textContent = 'View Details';
-            }
-        }
+        //     const button = details.previousElementSibling;
+        //     if (details.classList.contains('active')) {
+        //         button.textContent = 'Hide Details';
+        //     } else {
+        //         button.textContent = 'View Details';
+        //     }
+        // }
         
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
